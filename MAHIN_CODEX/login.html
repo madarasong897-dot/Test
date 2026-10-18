@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <title>Sign in · GOD TOJI</title>
+    <style>
+        :root {
+            color-scheme: light;
+            --background: #edf0e9;
+            --surface: #fbfcf8;
+            --border: #dce3da;
+            --ink: #26383a;
+            --muted: #75837d;
+            --accent: #286b67;
+            --accent-dark: #1e5756;
+            --danger: #a6534b;
+            --shadow: 0 24px 70px rgba(34, 52, 46, .12);
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            padding: 28px;
+            display: grid;
+            place-items: center;
+            color: var(--ink);
+            background:
+                radial-gradient(ellipse at 12% 8%, rgba(40, 107, 103, .10), transparent 34rem),
+                radial-gradient(ellipse at 92% 90%, rgba(177, 124, 56, .10), transparent 30rem),
+                var(--background);
+            font-family: "Avenir Next", "Trebuchet MS", ui-sans-serif, system-ui, sans-serif;
+        }
+
+        .login-shell {
+            width: min(100%, 432px);
+            animation: enter .45s ease both;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            margin: 0 0 22px 4px;
+            letter-spacing: .13em;
+            font-size: 13px;
+            font-weight: 800;
+        }
+
+        .brand-mark {
+            width: 42px;
+            height: 42px;
+            display: grid;
+            place-items: center;
+            border-radius: 13px;
+            color: #f3f5ef;
+            background: var(--accent);
+            letter-spacing: .04em;
+            box-shadow: 0 7px 18px rgba(40, 107, 103, .2);
+        }
+
+        .brand-label {
+            display: grid;
+            gap: 4px;
+        }
+
+        .brand-label small {
+            color: var(--muted);
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+        }
+
+        .login-card {
+            padding: clamp(25px, 7vw, 38px);
+            border: 1px solid rgba(220, 227, 218, .92);
+            border-radius: 22px;
+            background: rgba(251, 252, 248, .94);
+            box-shadow: var(--shadow);
+        }
+
+        .eyebrow {
+            margin: 0 0 10px;
+            color: var(--accent);
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: clamp(27px, 7vw, 34px);
+            letter-spacing: -.045em;
+            line-height: 1.15;
+        }
+
+        .intro {
+            margin: 10px 0 27px;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .login-error {
+            margin: 0 0 18px;
+            padding: 11px 13px;
+            border: 1px solid rgba(166, 83, 75, .22);
+            border-radius: 11px;
+            color: #813b35;
+            background: #fbefed;
+            font-size: 13px;
+            line-height: 1.45;
+        }
+
+        .login-error:empty { display: none; }
+
+        .field {
+            display: grid;
+            gap: 8px;
+            margin: 0 0 18px;
+        }
+
+        label {
+            font-size: 12px;
+            font-weight: 750;
+        }
+
+        input {
+            width: 100%;
+            min-height: 48px;
+            padding: 0 14px;
+            border: 1px solid var(--border);
+            border-radius: 11px;
+            outline: none;
+            color: var(--ink);
+            background: #fff;
+            font: inherit;
+            font-size: 14px;
+            transition: border-color .18s ease, box-shadow .18s ease;
+        }
+
+        input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(40, 107, 103, .13);
+        }
+
+        .password-wrap { position: relative; }
+        .password-wrap input { padding-right: 76px; }
+
+        .show-password {
+            position: absolute;
+            top: 50%;
+            right: 12px;
+            padding: 6px 4px;
+            transform: translateY(-50%);
+            border: 0;
+            color: var(--accent-dark);
+            background: transparent;
+            cursor: pointer;
+            font: inherit;
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        .submit {
+            width: 100%;
+            min-height: 49px;
+            margin-top: 5px;
+            border: 0;
+            border-radius: 11px;
+            color: #fff;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            box-shadow: 0 9px 20px rgba(30, 87, 86, .2);
+            cursor: pointer;
+            font: inherit;
+            font-size: 14px;
+            font-weight: 800;
+            transition: transform .18s ease, box-shadow .18s ease;
+        }
+
+        .submit:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 12px 23px rgba(30, 87, 86, .25);
+        }
+
+        .submit:focus-visible,
+        .show-password:focus-visible {
+            outline: 3px solid rgba(40, 107, 103, .28);
+            outline-offset: 3px;
+        }
+
+        .footnote {
+            margin: 21px 4px 0;
+            color: var(--muted);
+            font-size: 11px;
+            line-height: 1.55;
+            text-align: center;
+        }
+
+        @keyframes enter {
+            from { opacity: 0; transform: translateY(9px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: .01ms !important;
+                transition-duration: .01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="login-shell">
+        <div class="brand" aria-label="GOD TOJI Operations console">
+            <span class="brand-mark" aria-hidden="true">GT</span>
+            <span class="brand-label">
+                <span>GOD TOJI</span>
+                <small>Operations console</small>
+            </span>
+        </div>
+
+        <section class="login-card" aria-labelledby="login-title">
+            <p class="eyebrow">Secure dashboard access</p>
+            <h1 id="login-title">Welcome back</h1>
+            <p class="intro">Sign in with the username and password set for this dashboard.</p>
+
+            <p class="login-error" role="alert" aria-live="polite">{{LOGIN_ERROR}}</p>
+
+            <form method="post" action="/login" autocomplete="on">
+                <div class="field">
+                    <label for="username">Username</label>
+                    <input
+                        id="username"
+                        name="username"
+                        type="text"
+                        autocomplete="username"
+                        autocapitalize="none"
+                        spellcheck="false"
+                        required
+                        autofocus
+                    >
+                </div>
+
+                <div class="field">
+                    <label for="password">Password</label>
+                    <div class="password-wrap">
+                        <input
+                            id="password"
+                            name="password"
+                            type="password"
+                            autocomplete="current-password"
+                            required
+                        >
+                        <button class="show-password" type="button" aria-controls="password" aria-pressed="false">
+                            Show
+                        </button>
+                    </div>
+                </div>
+
+                <button class="submit" type="submit">Sign in</button>
+            </form>
+        </section>
+
+        <p class="footnote">Your session is protected and will expire automatically after 12 hours.</p>
+    </main>
+
+    <script>
+        const passwordInput = document.getElementById("password");
+        const toggleButton = document.querySelector(".show-password");
+
+        toggleButton.addEventListener("click", () => {
+            const showing = passwordInput.type === "text";
+            passwordInput.type = showing ? "password" : "text";
+            toggleButton.textContent = showing ? "Show" : "Hide";
+            toggleButton.setAttribute("aria-pressed", String(!showing));
+        });
+    </script>
+</body>
+</html>
